@@ -4,17 +4,46 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "ts-node-dev --exit-child --watch src --poll src/index.ts",
+    "generateFromSchema": "graphql-codegen --config codegen.ts",
+    "compile": "rimraf dist && graphql-codegen --config codegen.yml && tsc",
+    "startAfterBuild": "npm run compile && node ./dist/index.js",
+    "start": "ts-node-dev --exit-child --watch src --poll src/index.ts",
+    "test": "jest",
+    "testCI": "jest",
+    "build": "npx tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.12.13"
+    "@apollo/server": "^4.11.0",
+    "@graphql-tools/load-files": "^7.0.0",
+    "@graphql-tools/mock": "^9.0.5",
+    "@graphql-tools/schema": "^10.0.7",
+    "body-parser": "^1.20.3",
+    "class-validator": "^0.14.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "graphql": "^16.8.1",
+    "graphql-scalars": "^1.23.0",
+    "graphql-tag": "^2.12.6",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "ts-node-dev": "^2.0.0",
+    "type-graphql": "^2.0.0-beta.3",
+    "typeorm": "^0.3.20",
+    "typescript": "^5.6.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/typescript": "^4.1.0",
+    "@graphql-codegen/typescript-resolvers": "^4.3.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.17",
+    "@types/node": "^22.8.1",
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.2.2"
   }
 }

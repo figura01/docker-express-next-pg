@@ -10,4 +10,4 @@ COPY public public
 COPY tailwind.config.ts tailwind.config.ts
 COPY postcss.config.mjs postcss.config.mjs
 
-CMD npm start
+CMD npm run dev
